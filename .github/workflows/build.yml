@@ -33,9 +33,7 @@ jobs:
           platforms: linux/amd64
           tags: |
             ghcr.io/wintbiit/grpcwebproxy:latest
-            ghcr.io/wintbiit/grpcwebproxy:${{ needs.release.outputs.new_version }}
-          build-args: |
-            VERSION=${{ needs.release.outputs.new_version }}
+            ghcr.io/wintbiit/grpcwebproxy:${{ github.sha }}
           labels: |
             org.opencontainers.image.source=https://github.com/wintbiit/grpcwebproxy
             org.opencontainers.image.revision=${{ github.sha }}
