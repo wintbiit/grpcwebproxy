@@ -3,14 +3,13 @@ ARG SRC_REPO=https://github.com/improbable-eng/grpc-web.git
 FROM golang:1.23-alpine AS builder
 ARG SRC_REPO
 
-RUN apk add --no-cache git dep
+RUN apk add --no-cache git
 
 WORKDIR /go/src/github.com/improbable-eng/grpc-web
 
 RUN git clone ${SRC_REPO} .
 
-RUN go get -u github.com/golang/dep/cmd/dep && \
-    dep ensure && \
+RUN go mod download && \
     cd ./go/grpcwebproxy && \
     go build -o /go/bin/grpcwebproxy
 
