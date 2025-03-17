@@ -3,7 +3,7 @@ ARG SRC_REPO=https://github.com/improbable-eng/grpc-web.git
 FROM golang:1.23-alpine AS builder
 ARG SRC_REPO
 
-RUN apk add --no-cache git
+RUN apk add --no-cache git dep
 
 WORKDIR /go/src/github.com/improbable-eng/grpc-web
 
